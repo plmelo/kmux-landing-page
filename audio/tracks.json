@@ -1,0 +1,30 @@
+{
+  "retro1": {
+    "file": "retro1.mp3",
+    "title": "Midnight Run 80's",
+    "artist": "lofidreams",
+    "pixabayId": 400847,
+    "originalFile": "lofidreams-midnight-run-80x27s-synthwave-400847.mp3"
+  },
+  "retro2": {
+    "file": "retro2.mp3",
+    "title": "Midnight Run 90's",
+    "artist": "lofidreams",
+    "pixabayId": 344050,
+    "originalFile": "lofidreams-midnight-run-90x27s-synthwave-344050.mp3"
+  },
+  "retro3": {
+    "file": "retro3.mp3",
+    "title": "Neon Dreams 90's",
+    "artist": "lofidreams",
+    "pixabayId": 344049,
+    "originalFile": "lofidreams-neon-dreams-90s-synthwave-344049.mp3"
+  },
+  "retro4": {
+    "file": "retro4.mp3",
+    "title": "Miami Synth Rush",
+    "artist": "ronaldoreyz",
+    "pixabayId": 464903,
+    "originalFile": "ronaldoreyz-miami-synth-rush-retro-80s-background-music-464903.mp3"
+  }
+}
