@@ -3,17 +3,17 @@
 import { useRef, useState, useEffect } from "react";
 
 const terminalLines = [
-  { type: "command", text: "$ qmux init" },
+  { type: "command", text: "$ kmux init" },
   { type: "success", text: '  \u2713 Project \'my-saas\' registered' },
   { type: "success", text: "  \u2713 Port range: 3100-3199" },
-  { type: "success", text: "  \u2713 Config: .qmux.yaml" },
+  { type: "success", text: "  \u2713 Config: .kmux.yaml" },
   { type: "blank", text: "" },
-  { type: "command", text: "$ qmux up my-saas" },
+  { type: "command", text: "$ kmux up my-saas" },
   { type: "success", text: "  \u2713 tmux session 'my-saas' created" },
   { type: "success", text: "  \u2713 Dev server on :3100" },
   { type: "success", text: "  \u2713 Ready" },
   { type: "blank", text: "" },
-  { type: "command", text: "$ qmux switch client-app" },
+  { type: "command", text: "$ kmux switch client-app" },
   { type: "info", text: "  \u2713 my-saas suspended (state saved)" },
   { type: "info", text: "  \u2713 client-app resumed" },
   { type: "success", text: "  \u2713 Attached to client-app" },
@@ -49,7 +49,7 @@ export default function TerminalDemo() {
         <div className="terminal-dot" style={{ background: "#febc2e" }} />
         <div className="terminal-dot" style={{ background: "#28c840" }} />
         <span className="ml-3 text-sm opacity-50 font-mono">
-          qmux &mdash; terminal
+          kmux &mdash; terminal
         </span>
       </div>
       <div className="p-6 font-mono text-sm leading-7">

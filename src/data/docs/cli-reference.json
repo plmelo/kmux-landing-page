@@ -1,0 +1,113 @@
+{
+  "commands": [
+    {
+      "name": "completion",
+      "use": "completion [bash|zsh|fish]",
+      "short": "Generate shell completion script",
+      "long": "Generate shell completion script for kmux.\n\nTo install completions:\n\nBash:\n  $ kmux completion bash \u003e /etc/bash_completion.d/kmux\n\nZsh:\n  $ kmux completion zsh \u003e \"${fpath[1]}/_kmux\"\n\nFish:\n  $ kmux completion fish \u003e ~/.config/fish/completions/kmux.fish"
+    },
+    {
+      "name": "config",
+      "use": "config",
+      "short": "Manage kmux configuration",
+      "long": "View and modify kmux configuration settings.\n\nAvailable subcommands:\n- get: View configuration values\n- set: Update configuration values\n- path: Show configuration file path"
+    },
+    {
+      "name": "doctor",
+      "use": "doctor",
+      "short": "Check kmux installation and configuration",
+      "long": "Run diagnostics on your kmux installation and configuration.\n\nChecks:\n- tmux installation and version\n- Config file validity\n- Project registry integrity\n- Port range allocations\n- State file consistency"
+    },
+    {
+      "name": "down",
+      "use": "down [project]",
+      "short": "Stop a kmux project (kill tmux session)",
+      "long": "Stop a kmux project by killing its tmux session.\n\nIf no project name is provided, uses the current directory (if registered).\nIf a project name is provided, stops that project regardless of current directory.\n\nThis command kills the tmux session and transitions the project from RUNNING or SUSPENDED\nto STOPPED state. Port allocations remain registered but unused."
+    },
+    {
+      "name": "init",
+      "use": "init",
+      "short": "Register current directory as a kmux project",
+      "long": "Register the current directory as a kmux project.\n\nThis command creates a .kmux.yaml configuration file in the current directory\nand registers the project in the global kmux registry with an allocated port range.\n\nThe project name is used as a unique identifier across all kmux projects.\nIf --name is not provided, you will be prompted to enter a name (the directory\nname is offered as a default).\n\nUse --force to overwrite an existing .kmux.yaml file or to re-register a project\nthat was previously registered at the same path.",
+      "flags": [
+        {
+          "name": "force",
+          "usage": "overwrite existing .kmux.yaml or re-register project",
+          "default": "false"
+        },
+        {
+          "name": "name",
+          "usage": "project name (skips interactive prompt)"
+        },
+        {
+          "name": "port",
+          "usage": "custom port range start (default: auto-assign next available)",
+          "default": "0"
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "use": "list",
+      "short": "List all registered kmux projects",
+      "long": "List all registered kmux projects with their state, port range, and path.\n\nOutput is displayed as a table showing:\n- Project name\n- State (STOPPED, RUNNING, SUSPENDED)\n- Port range (e.g., 3000-3099)\n- Absolute path to project directory\n\nThe active project (if any) is highlighted.",
+      "flags": [
+        {
+          "name": "json",
+          "usage": "output as JSON",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "port",
+      "use": "port [project]",
+      "short": "Show allocated port range for a project",
+      "long": "Show the allocated port range for a kmux project.\n\nIf no project name is provided, shows port range for the current directory (if registered).\nIf a project name is provided, shows port range for that project.\n\nEach project gets a dedicated 100-port range (e.g., 3000-3099, 3100-3199).\nThe PORT environment variable is set to the range start for all tmux panes."
+    },
+    {
+      "name": "setup",
+      "use": "setup",
+      "short": "Run the interactive setup wizard",
+      "long": "Run or re-run the kmux setup wizard.\n\nThe wizard lets you configure analytics, shell completion, tmux verification,\nand default port ranges.\n\nUse --reset to replay the retro animation (like first run).",
+      "flags": [
+        {
+          "name": "reset",
+          "usage": "show the retro animation (like first run)",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "use": "status [project]",
+      "short": "Show project status and tmux window details",
+      "long": "Show the status of a kmux project including its state, port range, and tmux window details.\n\nIf no project name is provided, shows status for the current directory (if registered).\nIf a project name is provided, shows status for that project.\n\nDisplays:\n- Project state (STOPPED, RUNNING, SUSPENDED)\n- Port range allocation\n- tmux session name and window list\n- Pane details for each window"
+    },
+    {
+      "name": "switch",
+      "use": "switch \u003cproject\u003e",
+      "short": "Switch to a different kmux project",
+      "long": "Switch your entire development context to a different project.\n\nThis command:\n- Suspends the currently active project (if any)\n- Resumes the target project (or starts it if stopped)\n- Switches tmux client to the target project's session\n\nOne command switches your entire context: tmux session, port range, environment, and AI tool awareness."
+    },
+    {
+      "name": "up",
+      "use": "up [project]",
+      "short": "Start a kmux project (tmux session + ports)",
+      "long": "Start a kmux project by launching its tmux session and allocating its port range.\n\nIf no project name is provided, the current directory is used (if registered as a project).\nIf a project name is provided, kmux will cd to that project's directory and start it.\n\nThis command:\n- Creates a tmux session with windows/panes as defined in .kmux.yaml\n- Sets PORT and PORT_RANGE environment variables for all panes\n- Runs any startup commands defined in the config\n- Transitions the project from STOPPED to RUNNING state",
+      "flags": [
+        {
+          "name": "attach",
+          "usage": "attach to the tmux session after starting",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "version",
+      "use": "version",
+      "short": "Show kmux version",
+      "long": "Display the version number of kmux."
+    }
+  ]
+}

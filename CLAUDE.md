@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Landing page for **wmux** (work multiplexer) — a vendor-neutral control plane for multi-project, multi-AI development. This is a standalone Next.js site, separate from the wmux CLI repo at `~/projects/wmux`.
+Landing page for **kmux** (work multiplexer) — a vendor-neutral control plane for multi-project, multi-AI development. This is a standalone Next.js site, separate from the kmux CLI repo at `~/projects/kmux`.
 
 **Theme:** Retrowave / synthwave 80s aesthetic with neon glows, CRT scanlines, perspective grid, and animated effects.
 
@@ -74,7 +74,7 @@ src/
 - `flicker` — Neon flicker
 - `border-glow-pulse` — Card border pulse
 - `flash-burst` — Slot machine "w" landing flash
-- `wmux-burst` — Radial glow expansion from center (w landing)
+- `kmux-burst` — Radial glow expansion from center (w landing)
 - `neon-flicker-on` — Neon sign ignite flicker (mux text on w landing)
 
 ## Component Details
@@ -92,7 +92,7 @@ Cycling slot machine: words slide up through a fixed-width reel, while ".mux" st
 - Words are right-aligned within the measured-width reel.
 - Glow states: "none" | "flash" (brightness 3x + pink drop-shadow + scale 1.06) | "rest" (brightness 1.3x). Applied via CSS `filter` on the outer container span.
 - "mux" text is white for all words, turns neon-pink with glow when "w" is active. Uses `burstKey` to re-key the span and trigger `neon-flicker-on` CSS animation on each w landing.
-- Radial glow burst: absolutely positioned element behind text, animated via `wmux-burst` keyframe (expands from center and fades). Re-triggered via `burstKey` increment.
+- Radial glow burst: absolutely positioned element behind text, animated via `kmux-burst` keyframe (expands from center and fades). Re-triggered via `burstKey` increment.
 - Variable hold times: 1800ms for regular words, 3500ms for "w".
 
 **Known gotchas (already fixed, don't reintroduce):**
@@ -102,18 +102,18 @@ Cycling slot machine: words slide up through a fixed-width reel, while ".mux" st
 4. Glow/flash must use CSS `filter` on the outer container, not an overlay div, to cover all child elements uniformly.
 
 ### TerminalDemo.tsx
-Typing-style terminal animation triggered by IntersectionObserver (threshold 0.3). Shows `wmux init`, `wmux up`, `wmux switch` commands with line-by-line reveal. Blinking cursor appears after all lines.
+Typing-style terminal animation triggered by IntersectionObserver (threshold 0.3). Shows `kmux init`, `kmux up`, `kmux switch` commands with line-by-line reveal. Blinking cursor appears after all lines.
 
 ## Page Sections (page.tsx, top to bottom)
 
-1. **Navbar** — Fixed top, wmux logo + nav links + "Start Free Trial" CTA
+1. **Navbar** — Fixed top, kmux logo + nav links + "Start Free Trial" CTA
 2. **Hero** — Star field, sun, perspective grid, horizon glow, dark vignette for legibility, SlotMachine component, subtitle, dual CTAs
 3. **Works With** — Logo bar: Claude Code, Cursor, GitHub Copilot, OpenAI Codex, Gemini Code Assist
 4. **Features** — 6 cards: Context Switching, Port Management, MCP Server, tmux Orchestration, Terminal Capture, Workflow Intelligence
 5. **Terminal Demo** — TerminalDemo component with typing animation
 6. **The Problem** — Stats cards (8+ switches/day, 23min focus recovery, 100% port collisions preventable)
 7. **How It Works** — 3 steps: Initialize, Launch, Switch
-8. **MCP Highlight** — Split layout: description + terminal showing Claude querying wmux MCP
+8. **MCP Highlight** — Split layout: description + terminal showing Claude querying kmux MCP
 9. **Pricing** — 2 tiers: Free ($0) and Pro ($12/mo annual, $15/mo monthly)
 10. **Final CTA** — "Ready to multiplex?" with gradient text
 11. **Footer** — 4-column: logo, Product, Resources, Legal links
@@ -137,19 +137,19 @@ Typing-style terminal animation triggered by IntersectionObserver (threshold 0.3
 
 **No Teams tier.** MCP server access is the primary monetization lever.
 
-## wmux Product Context
+## kmux Product Context
 
-wmux is a Go CLI (`~/projects/wmux`) with these commands: `init`, `up`, `down`, `switch`, `status`, `list`, `rm`, `port`, `doctor`. v0.1 (CLI) is complete. v0.2 (MCP Server) is next.
+kmux is a Go CLI (`~/projects/kmux`) with these commands: `init`, `up`, `down`, `switch`, `status`, `list`, `rm`, `port`, `doctor`. v0.1 (CLI) is complete. v0.2 (MCP Server) is next.
 
 **Core value prop:** One command switches your entire dev context — tmux sessions, port ranges, environment, AI tool awareness. No more hunting through terminal tabs or fixing port collisions.
 
-**MCP integration (v0.2):** Exposes project state via Model Context Protocol. Resources use `wmux://` URI scheme. Any MCP-compatible AI tool can query running projects, read terminal output, and report task completions.
+**MCP integration (v0.2):** Exposes project state via Model Context Protocol. Resources use `kmux://` URI scheme. Any MCP-compatible AI tool can query running projects, read terminal output, and report task completions.
 
-**State machine:** STOPPED → (wmux up) → RUNNING → (wmux switch) → SUSPENDED → (wmux switch/up) → RUNNING
+**State machine:** STOPPED → (kmux up) → RUNNING → (kmux switch) → SUSPENDED → (kmux switch/up) → RUNNING
 
 **Port management:** Each project gets a 100-port range (e.g., 3000-3099, 3100-3199). Auto-assigned, no collisions.
 
-For full product details, see `~/projects/wmux/wmux-docs/PRD.md` and `~/projects/wmux/wmux-docs/BUILD-PLAN.md`.
+For full product details, see `~/projects/kmux/kmux-docs/PRD.md` and `~/projects/kmux/kmux-docs/BUILD-PLAN.md`.
 
 ## Design Decisions
 

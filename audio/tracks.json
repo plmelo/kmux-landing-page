@@ -1,4 +1,11 @@
 {
+  "retro0": {
+    "file": "playsound-80s-energy-176577.mp3",
+    "title": "80s Energy",
+    "artist": "playsound",
+    "pixabayId": 176577,
+    "originalFile": "playsound-80s-energy-176577.mp3"
+  },
   "retro1": {
     "file": "retro1.mp3",
     "title": "Midnight Run 80's",
@@ -26,5 +33,26 @@
     "artist": "ronaldoreyz",
     "pixabayId": 464903,
     "originalFile": "ronaldoreyz-miami-synth-rush-retro-80s-background-music-464903.mp3"
+  },
+  "retro5": {
+    "file": "lofidreams-neon-shadows-synthwave-music-384111.mp3",
+    "title": "Neon Shadows",
+    "artist": "lofidreams",
+    "pixabayId": 384111,
+    "originalFile": "lofidreams-neon-shadows-synthwave-music-384111.mp3"
+  },
+  "retro6": {
+    "file": "nickpanekaiassets-synthwave-80s-robot-swarm-218092.mp3",
+    "title": "Synthwave 80s Robot Swarm",
+    "artist": "nickpanekaiassets",
+    "pixabayId": 218092,
+    "originalFile": "nickpanekaiassets-synthwave-80s-robot-swarm-218092.mp3"
+  },
+  "retro7": {
+    "file": "niknet_art-neon-reverie-electro-pop-synthwave-retro-futuristic-418321.mp3",
+    "title": "Neon Reverie",
+    "artist": "niknet_art",
+    "pixabayId": 418321,
+    "originalFile": "niknet_art-neon-reverie-electro-pop-synthwave-retro-futuristic-418321.mp3"
   }
 }

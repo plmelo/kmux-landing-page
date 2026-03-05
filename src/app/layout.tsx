@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Orbitron, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import MusicPlayer from "@/components/MusicPlayer";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -21,11 +22,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "qmux — tmux for your whole workflow",
+  title: "Kmux — Quest multiplexer for developers",
   description:
-    "The vendor-neutral control plane for multi-project, multi-AI development. Port allocation, tmux orchestration, context switching — one command switches everything.",
+    "Every project is a quest. Kmux multiplexes them all. Port allocation, tmux orchestration, context switching — one command switches your entire world.",
   keywords: [
-    "qmux",
+    "Kmux",
+    "kmux",
+    "quest multiplexer",
     "tmux",
     "developer tools",
     "CLI",
@@ -33,6 +36,7 @@ export const metadata: Metadata = {
     "AI development",
     "context switching",
     "port management",
+    "project management",
   ],
 };
 
@@ -47,6 +51,7 @@ export default function RootLayout({
         className={`${orbitron.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
+        <MusicPlayer />
       </body>
     </html>
   );

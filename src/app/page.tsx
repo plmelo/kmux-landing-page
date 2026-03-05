@@ -1,6 +1,7 @@
+import Link from "next/link";
 import TerminalDemo from "@/components/TerminalDemo";
 import SlotMachine from "@/components/SlotMachine";
-import MusicPlayer from "@/components/MusicPlayer";
+
 
 const features = [
   {
@@ -94,14 +95,15 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           NAVBAR
           ═══════════════════════════════════════════ */}
-      <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4 bg-[var(--color-bg-dark)]/80 backdrop-blur-sm border-b border-white/5">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="font-display text-2xl font-bold neon-text-pink tracking-wider">
-              qmux
+              Kmux
             </span>
           </div>
 
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <a
               href="#features"
@@ -121,14 +123,49 @@ export default function Home() {
             >
               Pricing
             </a>
+            <Link
+              href="/docs"
+              className="text-sm text-white/60 hover:text-neon-cyan transition-colors"
+            >
+              Docs
+            </Link>
           </div>
 
-          <a
-            href="#pricing"
-            className="btn-neon-pink text-sm !py-2.5 !px-5"
-          >
-            Get qmux
-          </a>
+          {/* Desktop CTA & Mobile Menu Container */}
+          <div className="flex items-center gap-4">
+            <a
+              href="#pricing"
+              className="hidden md:block btn-neon-pink text-sm !py-2.5 !px-5"
+            >
+              Get Kmux
+            </a>
+
+            {/* Mobile Menu */}
+            <details className="md:hidden group">
+            <summary className="cursor-pointer text-white/60 hover:text-neon-cyan transition-colors list-none">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </summary>
+            <div className="absolute right-6 top-16 flex flex-col gap-3 neon-card rounded-xl p-4 bg-[var(--color-bg-card)] min-w-[200px] shadow-lg shadow-black/50">
+              <a href="#features" className="text-sm text-white/60 hover:text-neon-cyan transition-colors py-2">
+                Features
+              </a>
+              <a href="#demo" className="text-sm text-white/60 hover:text-neon-cyan transition-colors py-2">
+                Demo
+              </a>
+              <a href="#pricing" className="text-sm text-white/60 hover:text-neon-cyan transition-colors py-2">
+                Pricing
+              </a>
+              <Link href="/docs" className="text-sm text-white/60 hover:text-neon-cyan transition-colors py-2">
+                Docs
+              </Link>
+              <a href="#pricing" className="btn-neon-pink text-sm !py-2.5 !px-5 text-center mt-2">
+                Get Kmux
+              </a>
+            </div>
+            </details>
+          </div>
         </div>
       </nav>
 
@@ -170,16 +207,16 @@ export default function Home() {
             className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.3s", textShadow: "0 0 20px rgba(10,0,20,0.9), 0 0 40px rgba(10,0,20,0.7)" }}
           >
-            6 terminals. 3 projects. Ports colliding. Context lost.
+            6 terminals. 3 quests. Ports colliding. Context lost.
             <br />
-            <span className="text-white/90 font-semibold">One command fixes all of it.</span>
+            <span className="text-white/90 font-semibold">One command switches your entire world.</span>
           </p>
 
           <p
-            className="text-base text-white/50 max-w-xl mx-auto mb-10 animate-fade-slide-up opacity-0"
-            style={{ animationDelay: "0.45s", textShadow: "0 0 10px rgba(10,0,20,1), 0 0 30px rgba(10,0,20,1), 0 0 60px rgba(10,0,20,0.9), 0 0 90px rgba(10,0,20,0.7)" }}
+            className="text-base text-white/70 max-w-xl mx-auto mb-10 animate-fade-slide-up opacity-0"
+            style={{ animationDelay: "0.45s", textShadow: "0 0 10px rgba(10,0,20,1), 0 0 30px rgba(10,0,20,1), 0 0 60px rgba(10,0,20,1), 0 0 90px rgba(10,0,20,0.9), 0 0 120px rgba(10,0,20,0.8)" }}
           >
-            tmux orchestration and AI-awareness. Built in.
+            Quest multiplexer. tmux orchestration. AI-awareness.
           </p>
 
           <div
@@ -187,7 +224,7 @@ export default function Home() {
             style={{ animationDelay: "0.6s" }}
           >
             <a href="#pricing" className="btn-neon-pink text-lg">
-              Get qmux Free
+              Get kmux Free
             </a>
             <a href="#demo" className="btn-neon-cyan text-lg">
               See It In Action
@@ -211,7 +248,7 @@ export default function Home() {
             {/* Before */}
             <div className="before-col rounded-xl p-8">
               <h3 className="font-display text-lg font-bold text-red-400 mb-6 uppercase tracking-wider">
-                Without qmux
+                Without kmux
               </h3>
               <ul className="space-y-4">
                 {beforeItems.map((item, i) => (
@@ -226,7 +263,7 @@ export default function Home() {
             {/* After */}
             <div className="after-col rounded-xl p-8">
               <h3 className="font-display text-lg font-bold text-neon-cyan mb-6 uppercase tracking-wider">
-                With qmux
+                With kmux
               </h3>
               <ul className="space-y-4">
                 {afterItems.map((item, i) => (
@@ -258,9 +295,9 @@ export default function Home() {
 
           <div className="text-center mt-10">
             <code className="inline-block font-mono text-neon-cyan bg-white/5 border border-neon-cyan/20 px-6 py-2.5 rounded-lg text-sm">
-              $ brew install qmux
+              $ brew install kmux
             </code>
-            <p className="text-white/30 text-xs mt-3 font-mono">
+            <p className="text-white/50 text-xs mt-3 font-mono">
               macOS &amp; Linux
             </p>
           </div>
@@ -397,7 +434,7 @@ export default function Home() {
             Start shipping.
           </p>
           <a href="#pricing" className="btn-neon-pink text-lg relative">
-            Get qmux Free
+            Get kmux Free
           </a>
         </div>
       </section>
@@ -410,9 +447,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="md:col-span-1">
               <span className="font-display text-2xl font-bold neon-text-pink tracking-wider">
-                qmux
+                Kmux
               </span>
-              <p className="text-white/30 text-sm mt-3 leading-relaxed">
+              <p className="text-white/50 text-sm mt-3 leading-relaxed">
                 One command switches everything.
               </p>
             </div>
@@ -427,7 +464,7 @@ export default function Home() {
                     <li key={link}>
                       <a
                         href="#"
-                        className="text-white/30 text-sm hover:text-neon-cyan transition-colors"
+                        className="text-white/50 text-sm hover:text-neon-cyan transition-colors"
                       >
                         {link}
                       </a>
@@ -442,11 +479,19 @@ export default function Home() {
                 Resources
               </h4>
               <ul className="space-y-2">
-                {["Documentation", "GitHub", "Discord", "Blog"].map((link) => (
+                <li>
+                  <Link
+                    href="/docs"
+                    className="text-white/50 text-sm hover:text-neon-cyan transition-colors"
+                  >
+                    Documentation
+                  </Link>
+                </li>
+                {["GitHub", "Discord", "Blog"].map((link) => (
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-white/30 text-sm hover:text-neon-cyan transition-colors"
+                      className="text-white/50 text-sm hover:text-neon-cyan transition-colors"
                     >
                       {link}
                     </a>
@@ -464,7 +509,7 @@ export default function Home() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-white/30 text-sm hover:text-neon-cyan transition-colors"
+                      className="text-white/50 text-sm hover:text-neon-cyan transition-colors"
                     >
                       {link}
                     </a>
@@ -475,18 +520,16 @@ export default function Home() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-white/20 text-sm">
-              &copy; 2026 qmux. All rights reserved.
+            <p className="text-white/50 text-sm">
+              &copy; 2026 Kmux. All rights reserved.
             </p>
-            <p className="text-white/20 text-xs font-mono">
+            <p className="text-white/50 text-xs font-mono">
               Works with Claude Code, Cursor, Copilot, and any MCP-compatible tool.
             </p>
           </div>
         </div>
       </footer>
 
-      {/* Music Player Widget */}
-      <MusicPlayer />
     </div>
   );
 }

@@ -3,10 +3,14 @@ import { stat, open } from "fs/promises";
 import path from "path";
 
 const TRACKS: Record<string, string> = {
+  retro0: "playsound-80s-energy-176577.mp3",
   retro1: "retro1.mp3",
   retro2: "retro2.mp3",
   retro3: "retro3.mp3",
   retro4: "retro4.mp3",
+  retro5: "lofidreams-neon-shadows-synthwave-music-384111.mp3",
+  retro6: "nickpanekaiassets-synthwave-80s-robot-swarm-218092.mp3",
+  retro7: "niknet_art-neon-reverie-electro-pop-synthwave-retro-futuristic-418321.mp3",
 };
 
 const AUDIO_DIR = path.join(process.cwd(), "audio");

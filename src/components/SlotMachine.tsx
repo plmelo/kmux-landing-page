@@ -8,16 +8,16 @@ const words = [
   { text: "task", color: "#ffe44d", hold: 1800 },
   { text: "switch", color: "#4da8ff", hold: 1800 },
   { text: "port", color: "#ff6b35", hold: 1800 },
-  { text: "q", color: "#ff2d95", hold: 3500 },
+  { text: "k", color: "#ff2d95", hold: 3500 },
 ];
 
-const Q_INDEX = words.length - 1;
+const K_INDEX = words.length - 1;
 const SLOT_HEIGHT = 1.25; // em — matches leading-tight so baselines align with "mux"
 const PEEK = 0.6; // em — generous peek of prev/next words
 const REEL_HEIGHT = SLOT_HEIGHT + 2 * PEEK;
 
 export default function SlotMachine() {
-  const [currentIndex, setCurrentIndex] = useState(Q_INDEX);
+  const [currentIndex, setCurrentIndex] = useState(K_INDEX);
   const [phase, setPhase] = useState<"idle" | "sliding">("idle");
   const [glow, setGlow] = useState<"none" | "flash" | "rest">("rest");
   const [reelWidth, setReelWidth] = useState<number | null>(null);
@@ -41,7 +41,7 @@ export default function SlotMachine() {
   const scheduleNext = useCallback((index: number) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      if (words[index].text === "q") {
+      if (words[index].text === "k") {
         setFlickerOffKey(k => k + 1);
         setGlow("none");
       }
@@ -51,7 +51,7 @@ export default function SlotMachine() {
 
   // Wait 1s on page load before starting the cycle so the user is ready for the flash
   useEffect(() => {
-    const delay = setTimeout(() => scheduleNext(Q_INDEX), 1000);
+    const delay = setTimeout(() => scheduleNext(K_INDEX), 1000);
     return () => {
       clearTimeout(delay);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -65,7 +65,7 @@ export default function SlotMachine() {
         setCurrentIndex(nextIdx);
         setPhase("idle");
 
-        if (words[nextIdx].text === "q") {
+        if (words[nextIdx].text === "k") {
           setGlow("flash");
           setBurstKey(k => k + 1);
           setTimeout(() => setGlow("rest"), 600);
@@ -93,7 +93,7 @@ export default function SlotMachine() {
   const slideTransition =
     phase === "sliding" ? "transform 0.3s ease-in-out" : "none";
 
-  const isQActive = glow !== "none";
+  const isKActive = glow !== "none";
 
   const containerFilter =
     glow === "flash"
@@ -138,14 +138,14 @@ export default function SlotMachine() {
         ))}
       </span>
 
-      {/* Invisible "q" — makes in-flow width = "qmux" so flex centers the brand */}
+      {/* Invisible "k" — makes in-flow width = "kmux" so flex centers the brand */}
       <span className="invisible" aria-hidden="true">
-        q
+        k
       </span>
 
       {/* mux container — reel positions relative to this inner span */}
       <span className="relative inline-block">
-        {/* Radial glow burst on q landing */}
+        {/* Radial glow burst on k landing */}
         <span
           key={`burst-${burstKey}`}
           className="absolute pointer-events-none"
@@ -161,7 +161,7 @@ export default function SlotMachine() {
               "radial-gradient(circle, rgba(255,45,149,0.6) 0%, rgba(255,45,149,0.15) 40%, transparent 70%)",
             borderRadius: "50%",
             animation:
-              burstKey > 0 ? "qmux-burst 0.8s ease-out forwards" : "none",
+              burstKey > 0 ? "kmux-burst 0.8s ease-out forwards" : "none",
             zIndex: -1,
           }}
         />
@@ -200,18 +200,18 @@ export default function SlotMachine() {
           ))}
         </span>
 
-        {/* "mux" — neon-pink when "q" is active, white otherwise */}
+        {/* "mux" — neon-pink when "k" is active, white otherwise */}
         <span
           key={`mux-${burstKey}-${flickerOffKey}`}
           style={{
-            color: isQActive ? "#ff2d95" : "#ffffff",
-            textShadow: isQActive
+            color: isKActive ? "#ff2d95" : "#ffffff",
+            textShadow: isKActive
               ? "0 0 20px #ff2d9580, 0 0 40px #ff2d9540, 0 0 80px #ff2d9520"
               : "none",
             animation:
               burstKey > 0 && glow === "flash"
                 ? "neon-flicker-on 0.5s ease forwards"
-                : flickerOffKey > 0 && !isQActive
+                : flickerOffKey > 0 && !isKActive
                 ? "neon-flicker-off 0.6s ease forwards"
                 : "none",
           }}
