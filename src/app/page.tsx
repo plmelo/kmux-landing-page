@@ -43,7 +43,7 @@ const pricingPlans = [
       "Port management",
       "Event logging",
     ],
-    cta: "Get Started",
+    cta: "Join Waitlist",
     ctaStyle: "btn-neon-cyan",
     highlighted: false,
   },
@@ -137,7 +137,7 @@ export default function Home() {
               href="#pricing"
               className="hidden md:block btn-neon-pink text-sm !py-2.5 !px-5"
             >
-              Get Kmux
+              Join Waitlist
             </a>
 
             {/* Mobile Menu */}
@@ -161,7 +161,7 @@ export default function Home() {
                 Docs
               </Link>
               <a href="#pricing" className="btn-neon-pink text-sm !py-2.5 !px-5 text-center mt-2">
-                Get Kmux
+                Join Waitlist
               </a>
             </div>
             </details>
@@ -224,7 +224,7 @@ export default function Home() {
             style={{ animationDelay: "0.6s" }}
           >
             <a href="#pricing" className="btn-neon-pink text-lg">
-              Get kmux Free
+              Join Waitlist
             </a>
             <a href="#demo" className="btn-neon-cyan text-lg">
               See It In Action
@@ -298,7 +298,7 @@ export default function Home() {
               $ brew install kmux
             </code>
             <p className="text-white/50 text-xs mt-3 font-mono">
-              macOS &amp; Linux
+              macOS &amp; Linux &mdash; coming soon
             </p>
           </div>
         </div>
@@ -350,7 +350,7 @@ export default function Home() {
               Simple pricing. No surprises.
             </h2>
             <p className="text-white/50 max-w-xl mx-auto">
-              Start free. Upgrade when you need MCP and unlimited projects.
+              Coming soon. Join the waitlist to get early access.
             </p>
           </div>
 
@@ -364,11 +364,9 @@ export default function Home() {
                     : ""
                 }`}
               >
-                {plan.highlighted && (
-                  <div className="shimmer absolute -top-4 left-1/2 -translate-x-1/2 bg-neon-purple px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white">
-                    Coming Soon
-                  </div>
-                )}
+                <div className="shimmer absolute -top-4 left-1/2 -translate-x-1/2 bg-neon-purple px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white">
+                  Coming Soon
+                </div>
 
                 <h3 className="font-display text-xl font-bold text-white mb-2">
                   {plan.name}
@@ -434,7 +432,7 @@ export default function Home() {
             Start shipping.
           </p>
           <a href="#pricing" className="btn-neon-pink text-lg relative">
-            Get kmux Free
+            Join Waitlist
           </a>
         </div>
       </section>
