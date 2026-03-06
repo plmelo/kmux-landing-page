@@ -3,21 +3,20 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
 const words = [
-  { text: "agent", color: "#00fff9", hold: 1800 },
-  { text: "flow", color: "#39ff14", hold: 1800 },
-  { text: "queue", color: "#ffe44d", hold: 1800 },
-  { text: "mesh", color: "#ff6b35", hold: 1800 },
-  { text: "kernel", color: "#b537f2", hold: 1800 },
-  { text: "k", color: "#ff2d95", hold: 2000 },
+  { text: "projects", color: "#00fff9", hold: 1800 },
+  { text: "agents", color: "#39ff14", hold: 1800 },
+  { text: "contexts", color: "#ffe44d", hold: 1800 },
+  { text: "workflow", color: "#b537f2", hold: 1800 },
+  { text: "world", color: "#ff2d95", hold: 3000 },
 ];
 
-const K_INDEX = words.length - 1;
-const SLOT_HEIGHT = 1.25; // em — matches leading-tight so baselines align with "mux"
-const PEEK = 0.6; // em — generous peek of prev/next words
+const WORLD_INDEX = words.length - 1;
+const SLOT_HEIGHT = 1.25; // em — matches leading-tight
+const PEEK = 0.6; // em — peek of prev/next words
 const REEL_HEIGHT = SLOT_HEIGHT + 2 * PEEK;
 
 export default function SlotMachine() {
-  const [currentIndex, setCurrentIndex] = useState(K_INDEX);
+  const [currentIndex, setCurrentIndex] = useState(WORLD_INDEX);
   const [phase, setPhase] = useState<"idle" | "sliding">("idle");
   const [glow, setGlow] = useState<"none" | "flash" | "rest">("rest");
   const [reelWidth, setReelWidth] = useState<number | null>(null);
@@ -45,17 +44,17 @@ export default function SlotMachine() {
   const scheduleNext = useCallback((index: number) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => {
-      if (words[index].text === "k") {
-        setFlickerOffKey(k => k + 1);
+      if (words[index].text === "world") {
+        setFlickerOffKey((k) => k + 1);
         setGlow("none");
       }
       setPhase("sliding");
     }, words[index].hold);
   }, []);
 
-  // Start cycling immediately — don't block on fonts.ready
+  // Start cycling immediately
   useEffect(() => {
-    scheduleNext(K_INDEX);
+    scheduleNext(WORLD_INDEX);
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
@@ -68,9 +67,9 @@ export default function SlotMachine() {
         setCurrentIndex(nextIdx);
         setPhase("idle");
 
-        if (words[nextIdx].text === "k") {
+        if (words[nextIdx].text === "world") {
           setGlow("flash");
-          setBurstKey(k => k + 1);
+          setBurstKey((k) => k + 1);
           setTimeout(() => setGlow("rest"), 600);
         } else {
           setGlow("none");
@@ -96,7 +95,7 @@ export default function SlotMachine() {
   const slideTransition =
     phase === "sliding" ? "transform 0.3s ease-in-out" : "none";
 
-  const isKActive = glow !== "none";
+  const isWorldActive = glow !== "none";
 
   const containerFilter =
     glow === "flash"
@@ -105,7 +104,7 @@ export default function SlotMachine() {
       ? "brightness(1.3) drop-shadow(0 0 30px rgba(255,45,149,0.4))"
       : "none";
 
-  // Smooth multi-stop mask — gentle fade that keeps peek words readable
+  // Smooth multi-stop mask
   const maskGradient = [
     "linear-gradient(to bottom",
     "transparent 0%",
@@ -120,7 +119,7 @@ export default function SlotMachine() {
 
   return (
     <span
-      className="relative inline-block"
+      className="relative inline-flex items-baseline"
       style={{
         filter: containerFilter,
         transform: glow === "flash" ? "scale(1.06)" : "scale(1)",
@@ -132,7 +131,12 @@ export default function SlotMachine() {
         ref={measureRef}
         className="absolute pointer-events-none whitespace-nowrap"
         aria-hidden="true"
-        style={{ visibility: "hidden", position: "absolute", top: 0, left: 0 }}
+        style={{
+          visibility: "hidden",
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
       >
         {words.map((w, i) => (
           <span key={i} className="inline-block">
@@ -141,14 +145,29 @@ export default function SlotMachine() {
         ))}
       </span>
 
-      {/* Invisible "k" — makes in-flow width = "kmux" so flex centers the brand */}
-      <span className="invisible" aria-hidden="true">
-        k
+      {/* "kmux" — always neon-pink */}
+      <span
+        className="neon-text-pink"
+        key={`kmux-${burstKey}-${flickerOffKey}`}
+        style={{
+          textShadow: isWorldActive
+            ? "0 0 20px #ff2d9580, 0 0 40px #ff2d9540, 0 0 80px #ff2d9520"
+            : undefined,
+          animation:
+            burstKey > 0 && glow === "flash"
+              ? "neon-flicker-on 0.5s ease forwards"
+              : undefined,
+        }}
+      >
+        kmux
       </span>
 
-      {/* mux container — reel positions relative to this inner span */}
-      <span className="relative inline-block">
-        {/* Radial glow burst on k landing */}
+      {/* "your" — subdued white */}
+      <span className="text-white/60 mx-[0.3em]">your</span>
+
+      {/* Reel container — inline-block with measured width */}
+      <span className="relative inline-block" style={{ position: "relative" }}>
+        {/* Radial glow burst on "world" landing */}
         <span
           key={`burst-${burstKey}`}
           className="absolute pointer-events-none"
@@ -169,13 +188,12 @@ export default function SlotMachine() {
           }}
         />
 
-        {/* Slot reel — absolutely positioned to the left of "mux" */}
+        {/* Slot reel — left-aligned after "your" */}
         <span
-          className="absolute text-right"
+          className="absolute left-0"
           style={{
-            right: "100%",
             top: `-${PEEK}em`,
-            width: reelWidth ?? "7ch",
+            width: reelWidth ?? "9ch",
             height: `${REEL_HEIGHT}em`,
             clipPath: reelWidth ? "inset(0)" : undefined,
             overflow: "hidden",
@@ -186,7 +204,7 @@ export default function SlotMachine() {
           {slots.map((word, i) => (
             <span
               key={`${currentIndex}-${i}`}
-              className="absolute right-0"
+              className="absolute left-0"
               onTransitionEnd={i === 0 ? handleTransitionEnd : undefined}
               style={{
                 top: `${PEEK + (i - 1) * SLOT_HEIGHT}em`,
@@ -204,23 +222,12 @@ export default function SlotMachine() {
           ))}
         </span>
 
-        {/* "mux" — neon-pink when "k" is active, white otherwise */}
-        <span
-          key={`mux-${burstKey}-${flickerOffKey}`}
-          style={{
-            color: isKActive ? "#ff2d95" : "#ffffff",
-            textShadow: isKActive
-              ? "0 0 20px #ff2d9580, 0 0 40px #ff2d9540, 0 0 80px #ff2d9520"
-              : "none",
-            animation:
-              burstKey > 0 && glow === "flash"
-                ? "neon-flicker-on 0.5s ease forwards"
-                : flickerOffKey > 0 && !isKActive
-                ? "neon-flicker-off 0.6s ease forwards"
-                : "none",
-          }}
-        >
-          mux
+        {/* Invisible spacer to reserve width */}
+        <span className="invisible" aria-hidden="true">
+          {words.reduce(
+            (longest, w) => (w.text.length > longest.length ? w.text : longest),
+            ""
+          )}
         </span>
       </span>
     </span>

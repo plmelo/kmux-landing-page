@@ -206,16 +206,16 @@ export default function Home() {
             className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-2 sm:mb-4 leading-relaxed animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.3s", textShadow: "0 0 20px rgba(10,0,20,0.9), 0 0 40px rgba(10,0,20,0.7)" }}
           >
-            3 projects. 5 agents. Ports colliding. No shared context.
+            Port collisions. Scattered agents. Zero shared context.
             <br />
-            <span className="text-white/90 font-semibold">One command orchestrates everything.</span>
+            <span className="text-white/90 font-semibold">The orchestration layer under every AI tool you use.</span>
           </p>
 
           <p
             className="text-sm sm:text-base text-white/70 max-w-xl mx-auto mb-6 sm:mb-10 animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.45s", textShadow: "0 0 10px rgba(10,0,20,1), 0 0 30px rgba(10,0,20,1), 0 0 60px rgba(10,0,20,1), 0 0 90px rgba(10,0,20,0.9), 0 0 120px rgba(10,0,20,0.8)" }}
           >
-            The control plane for humans, agents, and everything in between.
+            Works with Claude Code, Cursor, Copilot, Codex, and any MCP-compatible tool.
           </p>
 
           <div
@@ -516,7 +516,7 @@ export default function Home() {
               &copy; 2026 Kmux. All rights reserved.
             </p>
             <p className="text-white/50 text-xs font-mono">
-              Works with Claude Code, Cursor, Copilot, and any MCP-compatible tool.
+              Works with Claude Code, Cursor, Copilot, Codex, and any MCP-compatible tool.
             </p>
           </div>
         </div>
