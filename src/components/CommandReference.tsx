@@ -93,7 +93,7 @@ export default function CommandReference({ command }: { command: Command }) {
         </h3>
         <div className="space-y-2 text-sm">
           <p className="text-white/60">
-            See the <a href="/docs/getting-started" className="text-[var(--color-neon-pink)] hover:text-[var(--color-neon-cyan)] transition-colors font-semibold">Getting Started Guide</a> for complete workflows and examples of using this command in real quests.
+            See the <a href="/docs/getting-started" className="text-[var(--color-neon-pink)] hover:text-[var(--color-neon-cyan)] transition-colors font-semibold">Getting Started Guide</a> for complete workflows and examples of using this command in real projects.
           </p>
         </div>
       </section>

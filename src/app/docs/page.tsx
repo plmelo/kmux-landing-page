@@ -8,7 +8,7 @@ export default function DocsHomePage() {
           Kmux Documentation
         </h1>
         <p className="text-lg md:text-xl text-white/80">
-          Everything you need to know about Kmux, the quest multiplexer for multi-project, multi-AI development.
+          Everything you need to know about Kmux, the work multiplexer for multi-project, multi-AI development.
         </p>
       </div>
 
@@ -22,7 +22,7 @@ export default function DocsHomePage() {
             Getting Started →
           </h2>
           <p className="text-white/70 leading-relaxed relative z-10">
-            Install Kmux and set up your first quest in 5 minutes. Learn the core concepts and workflow.
+            Install Kmux and set up your first project in 5 minutes. Learn the core concepts and workflow.
           </p>
         </Link>
 
@@ -50,28 +50,28 @@ export default function DocsHomePage() {
             <Link href="/docs/cli/init" className="hover:text-[var(--color-neon-pink)] transition-colors flex items-center gap-2">
               <span className="text-[var(--color-neon-pink)]">→</span>
               <code className="font-mono text-sm text-[var(--color-neon-cyan)]">kmux init</code>
-              <span>— Register a quest</span>
+              <span>— Register a project</span>
             </Link>
           </li>
           <li>
             <Link href="/docs/cli/up" className="hover:text-[var(--color-neon-pink)] transition-colors flex items-center gap-2">
               <span className="text-[var(--color-neon-pink)]">→</span>
               <code className="font-mono text-sm text-[var(--color-neon-cyan)]">kmux up</code>
-              <span>— Start a quest</span>
+              <span>— Start a project</span>
             </Link>
           </li>
           <li>
             <Link href="/docs/cli/switch" className="hover:text-[var(--color-neon-pink)] transition-colors flex items-center gap-2">
               <span className="text-[var(--color-neon-pink)]">→</span>
               <code className="font-mono text-sm text-[var(--color-neon-cyan)]">kmux switch</code>
-              <span>— Switch quests</span>
+              <span>— Switch projects</span>
             </Link>
           </li>
           <li>
             <Link href="/docs/cli/list" className="hover:text-[var(--color-neon-pink)] transition-colors flex items-center gap-2">
               <span className="text-[var(--color-neon-pink)]">→</span>
               <code className="font-mono text-sm text-[var(--color-neon-cyan)]">kmux list</code>
-              <span>— List all quests</span>
+              <span>— List all projects</span>
             </Link>
           </li>
         </ul>

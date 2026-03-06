@@ -22,13 +22,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kmux — Quest multiplexer for developers",
+  title: "Kmux — Work multiplexer for developers",
   description:
-    "Every project is a quest. Kmux multiplexes them all. Port allocation, tmux orchestration, context switching — one command switches your entire world.",
+    "One control plane for every project and every agent. Port allocation, tmux orchestration, context switching — one command switches your entire world.",
   keywords: [
     "Kmux",
     "kmux",
-    "quest multiplexer",
+    "work multiplexer",
     "tmux",
     "developer tools",
     "CLI",

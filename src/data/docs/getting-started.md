@@ -1,6 +1,6 @@
 # Getting Started with Kmux
 
-Welcome to **Kmux** (quest multiplexer) — a control plane for multi-project, multi-AI development. Every project is a quest. Kmux multiplexes them all.
+Welcome to **Kmux** (work multiplexer) — a control plane for multi-project, multi-AI development. One command switches your entire context.
 
 Think of it as tmux for your entire workflow: one command switches your complete project context—like changing save files in a game.
 
@@ -8,12 +8,12 @@ Think of it as tmux for your entire workflow: one command switches your complete
 
 Kmux solves the context-switching chaos of modern development:
 
-- **Instant quest switching**: One command switches tmux sessions, port ranges, and environment
-- **Zero port collisions**: Auto-assigned 100-port ranges per quest (3000-3099, 3100-3199, etc.)
-- **AI tool coordination**: MCP server lets AI assistants see your quest state (coming in v0.2)
-- **Quest tracking**: Always know which quest is running, suspended, or stopped
+- **Instant context switching**: One command switches tmux sessions, port ranges, and environment
+- **Zero port collisions**: Auto-assigned 100-port ranges per project (3000-3099, 3100-3199, etc.)
+- **AI tool coordination**: MCP server lets AI assistants see your project state (coming in v0.2)
+- **Project tracking**: Always know which project is running, suspended, or stopped
 
-Every codebase is a quest—whether it's a client project, side project, or open-source contribution. kmux manages them all so you can switch between quests instantly without losing context.
+Whether it's a client project, side project, or open-source contribution — kmux manages them all so you can switch between projects instantly without losing context.
 
 ## Installation
 
@@ -66,9 +66,9 @@ The wizard will:
 - **tmux** version 3.0+ (install via `brew install tmux` or `apt install tmux`)
 - **Go** 1.21+ (only for building from source)
 
-## Quick Start: Your First Quest
+## Quick Start: Your First Project
 
-### 1. Initialize a Quest
+### 1. Initialize a Project
 
 Navigate to your project directory and register it with kmux:
 
@@ -116,7 +116,7 @@ tmux:
 - `panes`: Commands to run in each pane (empty string = just a shell)
 - `command`: Startup command for the pane
 
-### 3. Start Your Quest
+### 3. Start Your Project
 
 ```bash
 kmux up
@@ -126,7 +126,7 @@ This command:
 - Creates a tmux session with your configured layout
 - Sets `PORT=3000` and `PORT_RANGE=3000-3099` in all panes
 - Runs startup commands
-- Transitions quest state to RUNNING
+- Transitions project state to RUNNING
 
 **Attach to the tmux session:**
 ```bash
@@ -165,28 +165,28 @@ kmux down
 
 This kills the tmux session and sets project state to STOPPED. Port allocation remains reserved.
 
-## Working with Multiple Quests
+## Working with Multiple Projects
 
-### Register Multiple Quests
+### Register Multiple Projects
 
 ```bash
-# Quest 1: Client frontend
+# Project 1: Client frontend
 cd ~/projects/frontend
 kmux init --name frontend
 # Assigned ports: 3000-3099
 
-# Quest 2: API backend
+# Project 2: API backend
 cd ~/projects/backend
 kmux init --name backend
 # Assigned ports: 3100-3199
 
-# Quest 3: Side project
+# Project 3: Side project
 cd ~/projects/mobile
 kmux init --name mobile
 # Assigned ports: 3200-3299
 ```
 
-### List All Quests
+### List All Projects
 
 ```bash
 kmux list
@@ -203,7 +203,7 @@ kmux list
 └──────────┴─────────────┴───────────┴─────────────────────────┘
 ```
 
-### Switch Between Quests
+### Switch Between Projects
 
 The `switch` command is the heart of kmux — like changing save files:
 
@@ -212,8 +212,8 @@ kmux switch backend
 ```
 
 This command:
-1. Suspends your current quest (if any)
-2. Resumes (or starts) the target quest
+1. Suspends your current project (if any)
+2. Resumes (or starts) the target project
 3. Switches your tmux client to the new session
 
 **One command switches your entire context.** It's like loading a different save file — all your terminals, servers, and environment variables switch instantly.
@@ -374,14 +374,14 @@ Auto-managed file tracking all projects (don't edit manually):
 }
 ```
 
-## Quest States
+## Project States
 
-kmux tracks three quest states:
+kmux tracks three project states:
 
 | State | Description | Commands |
 |-------|-------------|----------|
-| **STOPPED** | Quest registered but not running | `kmux init`, `kmux down` |
-| **RUNNING** | tmux session active, you're on this quest | `kmux up`, `kmux switch <this>` |
+| **STOPPED** | Project registered but not running | `kmux init`, `kmux down` |
+| **RUNNING** | tmux session active, you're on this project | `kmux up`, `kmux switch <this>` |
 | **SUSPENDED** | tmux session exists but paused (like a background save) | `kmux switch <other>` |
 
 **State Transitions:**
@@ -392,20 +392,20 @@ RUNNING ─(kmux down)→ STOPPED
 SUSPENDED ─(kmux switch this)→ RUNNING
 ```
 
-Think of it like a game: STOPPED = quest not started, RUNNING = actively playing, SUSPENDED = paused save.
+Think of it like save files: STOPPED = not started, RUNNING = actively working, SUSPENDED = paused.
 
 ## Tips & Best Practices
 
-### 1. Use Descriptive Quest Names
+### 1. Use Descriptive Project Names
 
 Good: `saas-frontend`, `client-api`, `oss-contribution`
 Avoid: `app`, `project1`, `test`
 
-Think of quest names like save file names — you should know what's inside without opening it.
+Think of project names like save file names — you should know what's inside without opening it.
 
-### 2. Configure tmux Layouts for Your Quest
+### 2. Configure tmux Layouts for Your Project
 
-Most developers use 2-4 windows per quest:
+Most developers use 2-4 windows per project:
 - **server** — Dev servers, watch processes
 - **editor** — Vim/Emacs/etc.
 - **shell** — Git, commands, exploration
@@ -413,7 +413,7 @@ Most developers use 2-4 windows per quest:
 
 ### 3. Add kmux to Your Onboarding Docs
 
-Make `kmux init` the first step for new team members. Encode your team's workspace layout in `.kmux.yaml` and check it into git. New devs can start their quest in seconds.
+Make `kmux init` the first step for new team members. Encode your team's workspace layout in `.kmux.yaml` and check it into git. New devs can start in seconds.
 
 ### 4. Leverage Port Ranges
 
@@ -530,6 +530,4 @@ kmux is proprietary software with a free CLI tier. See LICENSE for details.
 
 ---
 
-**You're all set!** Start with `kmux init` in your project directory and begin your quest. Switch between quests instantly, never lose context, and finally have all your projects under control.
-
-Every project is a quest. Kmux multiplexes them all.
+**You're all set!** Start with `kmux init` in your project directory. Switch between projects instantly, never lose context, and finally have all your work under control.
