@@ -26,16 +26,20 @@ export default function SlotMachine() {
   const measureRef = useRef<HTMLSpanElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
 
-  // Measure widest word at actual rendered size
+  // Measure widest word at actual rendered size, re-measure after fonts load
   useEffect(() => {
-    if (measureRef.current) {
-      let maxW = 0;
-      const children = measureRef.current.children;
-      for (let i = 0; i < children.length; i++) {
-        maxW = Math.max(maxW, (children[i] as HTMLElement).offsetWidth);
+    function measure() {
+      if (measureRef.current) {
+        let maxW = 0;
+        const children = measureRef.current.children;
+        for (let i = 0; i < children.length; i++) {
+          maxW = Math.max(maxW, (children[i] as HTMLElement).offsetWidth);
+        }
+        setReelWidth(maxW);
       }
-      setReelWidth(maxW);
     }
+    measure();
+    document.fonts.ready.then(measure);
   }, []);
 
   const scheduleNext = useCallback((index: number) => {
