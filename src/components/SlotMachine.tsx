@@ -176,9 +176,10 @@ export default function SlotMachine() {
           style={{
             right: "100%",
             top: `-${PEEK}em`,
-            width: reelWidth ?? "auto",
+            width: reelWidth ?? "7ch",
             height: `${REEL_HEIGHT}em`,
-            clipPath: "inset(0)",
+            clipPath: reelWidth ? "inset(0)" : undefined,
+            overflow: "hidden",
             maskImage: maskGradient,
             WebkitMaskImage: maskGradient,
           }}
