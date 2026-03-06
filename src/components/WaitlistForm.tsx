@@ -53,7 +53,7 @@ export default function WaitlistForm({ variant = "pink" }: { variant?: Variant }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 items-start">
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 items-center sm:items-start">
       <div className="flex flex-col gap-1.5 w-full sm:w-auto">
         <input
           type="email"

@@ -198,12 +198,12 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 mb-32 pt-20 md:pt-0 max-w-4xl mx-auto">
-          <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-8 animate-fade-slide-up opacity-0 leading-tight flex justify-center">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-8 animate-fade-slide-up opacity-0 leading-tight flex justify-center">
             <SlotMachine />
           </h1>
 
           <p
-            className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed animate-fade-slide-up opacity-0"
+            className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-2 sm:mb-4 leading-relaxed animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.3s", textShadow: "0 0 20px rgba(10,0,20,0.9), 0 0 40px rgba(10,0,20,0.7)" }}
           >
             3 projects. 5 agents. Ports colliding. No shared context.
@@ -212,7 +212,7 @@ export default function Home() {
           </p>
 
           <p
-            className="text-base text-white/70 max-w-xl mx-auto mb-10 animate-fade-slide-up opacity-0"
+            className="text-sm sm:text-base text-white/70 max-w-xl mx-auto mb-6 sm:mb-10 animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.45s", textShadow: "0 0 10px rgba(10,0,20,1), 0 0 30px rgba(10,0,20,1), 0 0 60px rgba(10,0,20,1), 0 0 90px rgba(10,0,20,0.9), 0 0 120px rgba(10,0,20,0.8)" }}
           >
             The control plane for humans, agents, and everything in between.
