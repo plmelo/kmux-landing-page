@@ -53,18 +53,10 @@ export default function SlotMachine() {
     }, words[index].hold);
   }, []);
 
-  // Start cycling once fonts are ready (or after 2s max if fonts are slow)
+  // Start cycling immediately — don't block on fonts.ready
   useEffect(() => {
-    let started = false;
-    function start() {
-      if (started) return;
-      started = true;
-      scheduleNext(K_INDEX);
-    }
-    document.fonts.ready.then(start);
-    const fallback = setTimeout(start, 2000);
+    scheduleNext(K_INDEX);
     return () => {
-      clearTimeout(fallback);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [scheduleNext]);

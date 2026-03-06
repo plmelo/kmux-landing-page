@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Orbitron, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import MusicPlayer from "@/components/MusicPlayer";
+import LazyMusicPlayer from "@/components/LazyMusicPlayer";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -51,7 +51,7 @@ export default function RootLayout({
         className={`${orbitron.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
-        <MusicPlayer />
+        <LazyMusicPlayer />
       </body>
     </html>
   );

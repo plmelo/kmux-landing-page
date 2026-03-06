@@ -233,7 +233,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           BEFORE / AFTER
           ═══════════════════════════════════════════ */}
-      <section className="relative z-10 py-24 md:py-32">
+      <section className="relative z-10 py-24 md:py-32 deferred-section">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 neon-text-cyan">
@@ -280,7 +280,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           TERMINAL DEMO
           ═══════════════════════════════════════════ */}
-      <section id="demo" className="relative z-10 py-24 md:py-32">
+      <section id="demo" className="relative z-10 py-24 md:py-32 deferred-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 neon-text-cyan">
@@ -306,7 +306,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           FEATURES
           ═══════════════════════════════════════════ */}
-      <section id="features" className="relative z-10 py-24 md:py-32">
+      <section id="features" className="relative z-10 py-24 md:py-32 deferred-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-4">
@@ -340,7 +340,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           PRICING
           ═══════════════════════════════════════════ */}
-      <section id="pricing" className="relative z-10 py-24 md:py-32">
+      <section id="pricing" className="relative z-10 py-24 md:py-32 deferred-section">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 neon-text-cyan">

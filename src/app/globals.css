@@ -175,6 +175,7 @@ body {
   );
   pointer-events: none;
   z-index: 50;
+  contain: strict;
 }
 
 /* VHS tracking line */
@@ -186,6 +187,8 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
   z-index: 51;
   pointer-events: none;
+  will-change: top;
+  contain: layout style;
 }
 
 /* Perspective grid */
@@ -213,6 +216,8 @@ body {
   transform-origin: 50% 0%;
   mask-image: linear-gradient(to bottom, transparent, black 10%, black 80%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 80%, transparent);
+  will-change: transform;
+  contain: layout style;
 }
 
 /* Sun with horizontal stripes */
@@ -286,8 +291,7 @@ body {
 .neon-card {
   background: var(--color-bg-card);
   border: 1px solid rgba(255, 45, 149, 0.2);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .neon-card:hover {
@@ -396,6 +400,12 @@ body {
   z-index: 5;
 }
 
+/* Deferred below-fold sections — skip rendering until near viewport */
+.deferred-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* Section divider */
 .section-divider {
   height: 1px;
@@ -415,13 +425,11 @@ body {
 .before-col {
   background: rgba(255, 45, 60, 0.04);
   border: 1px solid rgba(255, 60, 60, 0.2);
-  backdrop-filter: blur(10px);
 }
 
 .after-col {
   background: rgba(0, 255, 249, 0.04);
   border: 1px solid rgba(0, 255, 249, 0.2);
-  backdrop-filter: blur(10px);
 }
 
 /* ═══════════════════════════════════════════
@@ -446,10 +454,8 @@ body {
 }
 
 .music-player-panel {
-  background: rgba(20, 10, 45, 0.85);
+  background: rgba(20, 10, 45, 0.95);
   border: 1px solid rgba(255, 45, 149, 0.3);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 0 20px rgba(255, 45, 149, 0.1), 0 8px 32px rgba(0, 0, 0, 0.4);
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
