@@ -8,7 +8,7 @@ const words = [
   { text: "queue", color: "#ffe44d", hold: 1800 },
   { text: "mesh", color: "#ff6b35", hold: 1800 },
   { text: "kernel", color: "#b537f2", hold: 1800 },
-  { text: "k", color: "#ff2d95", hold: 3500 },
+  { text: "k", color: "#ff2d95", hold: 2000 },
 ];
 
 const K_INDEX = words.length - 1;
@@ -53,11 +53,18 @@ export default function SlotMachine() {
     }, words[index].hold);
   }, []);
 
-  // Wait 1s on page load before starting the cycle so the user is ready for the flash
+  // Start cycling once fonts are ready (or after 2s max if fonts are slow)
   useEffect(() => {
-    const delay = setTimeout(() => scheduleNext(K_INDEX), 1000);
+    let started = false;
+    function start() {
+      if (started) return;
+      started = true;
+      scheduleNext(K_INDEX);
+    }
+    document.fonts.ready.then(start);
+    const fallback = setTimeout(start, 2000);
     return () => {
-      clearTimeout(delay);
+      clearTimeout(fallback);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [scheduleNext]);
