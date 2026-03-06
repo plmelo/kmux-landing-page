@@ -1,6 +1,7 @@
 import Link from "next/link";
 import TerminalDemo from "@/components/TerminalDemo";
 import SlotMachine from "@/components/SlotMachine";
+import WaitlistForm from "@/components/WaitlistForm";
 
 
 const features = [
@@ -8,7 +9,7 @@ const features = [
     icon: "\u26A1",
     title: "Instant Context Switching",
     description:
-      "One command suspends your current project and resumes the target. tmux session, ports, environment \u2014 everything follows. Under a second.",
+      "One command suspends a project and resumes the target. tmux session, ports, environment \u2014 everything follows. Works for you or your agents.",
   },
   {
     icon: "\uD83D\uDD0C",
@@ -20,7 +21,7 @@ const features = [
     icon: "\uD83E\uDD16",
     title: "MCP Server for AI Tools",
     description:
-      "AI tools query your project state natively via Model Context Protocol. Which projects are running, live terminal output, task completions \u2014 all queryable. No vendor lock-in.",
+      "Agents query project state natively via Model Context Protocol. Which projects are running, live terminal output, task completions \u2014 all queryable. Run agents across projects without conflicts.",
   },
   {
     icon: "\uD83D\uDCDF",
@@ -32,54 +33,52 @@ const features = [
 
 const pricingPlans = [
   {
-    name: "Free",
-    price: "$0",
+    name: "Solo",
+    price: "Free",
     period: "forever",
-    description: "No login required \u2014 runs standalone",
+    description: "You drive, CLI only",
     features: [
       "CLI project management",
-      "Up to 3 projects",
+      "Unlimited projects",
       "tmux orchestration",
       "Port management",
       "Event logging",
     ],
-    cta: "Join Waitlist",
-    ctaStyle: "btn-neon-cyan",
     highlighted: false,
+    earlyBird: false,
   },
   {
-    name: "Pro",
-    price: "$12",
-    period: "/mo billed annually",
-    monthlyNote: "$15/mo billed monthly",
-    description: "Full power for serious developers",
+    name: "Agentic",
+    price: "Paid",
+    period: "pricing at launch",
+    description: "Agents see, act, and orchestrate",
     features: [
-      "Everything in Free",
-      "Unlimited projects",
-      "MCP Server for AI tools",
-      "Terminal capture for AI context",
+      "Everything in Solo",
+      "Full MCP Server \u2014 read + write",
+      "Agents query and switch contexts",
+      "Agents read live terminal output",
+      "Agents report task completions",
+      "Agent activity log",
       "Priority support",
-      "14-day free trial",
     ],
-    cta: "Join Waitlist",
-    ctaStyle: "btn-neon-pink",
     highlighted: true,
+    earlyBird: true,
   },
 ];
 
 const beforeItems = [
-  "6 terminals, hunting for the right one",
-  "localhost:3000 wars between projects",
-  "23 minutes to regain focus after every switch",
+  "Agents and humans fighting over the same ports",
+  "No shared context across projects",
   "AI tools blind to what\u2019s running where",
+  "23 minutes to regain focus after every switch",
   "Fragile bash scripts holding it together",
 ];
 
 const afterItems = [
   "One command switches entire context",
   "Auto-assigned port ranges, zero collisions",
-  "Context switch in under a second",
-  "AI tools query live project state via MCP",
+  "Agents query live project state via MCP",
+  "Humans and agents share the same control plane",
   "Declarative config, fully reproducible",
 ];
 
@@ -199,7 +198,7 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative z-10 text-center px-6 mb-32 pt-20 md:pt-0 max-w-4xl mx-auto">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-8 animate-fade-slide-up opacity-0 leading-tight flex justify-center">
+          <h1 className="font-display text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-8 animate-fade-slide-up opacity-0 leading-tight flex justify-center">
             <SlotMachine />
           </h1>
 
@@ -207,26 +206,24 @@ export default function Home() {
             className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.3s", textShadow: "0 0 20px rgba(10,0,20,0.9), 0 0 40px rgba(10,0,20,0.7)" }}
           >
-            6 terminals. 3 quests. Ports colliding. Context lost.
+            3 projects. 5 agents. Ports colliding. No shared context.
             <br />
-            <span className="text-white/90 font-semibold">One command switches your entire world.</span>
+            <span className="text-white/90 font-semibold">One command orchestrates everything.</span>
           </p>
 
           <p
             className="text-base text-white/70 max-w-xl mx-auto mb-10 animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.45s", textShadow: "0 0 10px rgba(10,0,20,1), 0 0 30px rgba(10,0,20,1), 0 0 60px rgba(10,0,20,1), 0 0 90px rgba(10,0,20,0.9), 0 0 120px rgba(10,0,20,0.8)" }}
           >
-            Quest multiplexer. tmux orchestration. AI-awareness.
+            The control plane for humans, agents, and everything in between.
           </p>
 
           <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-slide-up opacity-0"
+            className="flex flex-col items-center gap-4 animate-fade-slide-up opacity-0"
             style={{ animationDelay: "0.6s" }}
           >
-            <a href="#pricing" className="btn-neon-pink text-lg">
-              Join Waitlist
-            </a>
-            <a href="#demo" className="btn-neon-cyan text-lg">
+            <WaitlistForm variant="pink" />
+            <a href="#demo" className="btn-neon-cyan text-sm bg-[rgba(10,0,20,0.5)]">
               See It In Action
             </a>
           </div>
@@ -364,7 +361,7 @@ export default function Home() {
                     : ""
                 }`}
               >
-                <div className="shimmer absolute -top-4 left-1/2 -translate-x-1/2 bg-neon-purple px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white">
+                <div className="shimmer absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white bg-neon-purple">
                   Coming Soon
                 </div>
 
@@ -377,19 +374,17 @@ export default function Home() {
                   <span className="font-display text-4xl font-bold text-white">
                     {plan.price}
                   </span>
-                  {plan.period && (
-                    <span className="text-white/40 text-sm ml-1">
-                      {plan.period}
-                    </span>
-                  )}
-                  {plan.monthlyNote && (
-                    <div className="text-white/30 text-xs mt-1">
-                      {plan.monthlyNote}
+                  <span className="text-white/40 text-sm ml-1">
+                    {plan.period}
+                  </span>
+                  {plan.earlyBird && (
+                    <div className="text-neon-pink text-xs mt-2 font-semibold">
+                      Waitlist members get early-bird pricing
                     </div>
                   )}
                 </div>
 
-                <ul className="space-y-3 mb-8 flex-grow">
+                <ul className="space-y-3 flex-grow">
                   {plan.features.map((feature, j) => (
                     <li
                       key={j}
@@ -400,15 +395,14 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-
-                <a
-                  href="#"
-                  className={`${plan.ctaStyle} text-center text-sm w-full`}
-                >
-                  {plan.cta}
-                </a>
               </div>
             ))}
+          </div>
+
+          {/* Shared waitlist form below pricing cards */}
+          <div className="mt-12 flex flex-col items-center gap-3">
+            <p className="text-white/50 text-sm">Get early access to both tiers</p>
+            <WaitlistForm variant="pink" />
           </div>
         </div>
       </section>
@@ -425,15 +419,15 @@ export default function Home() {
 
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-6 relative">
             <span className="gradient-text animate-gradient-text">
-              Stop drowning in terminals.
+              Stop juggling. Start orchestrating.
             </span>
           </h2>
           <p className="text-white/50 text-lg mb-10 relative">
-            Start shipping.
+            One control plane for every project, every agent.
           </p>
-          <a href="#pricing" className="btn-neon-pink text-lg relative">
-            Join Waitlist
-          </a>
+          <div className="relative flex justify-center">
+            <WaitlistForm variant="pink" />
+          </div>
         </div>
       </section>
 
@@ -448,7 +442,7 @@ export default function Home() {
                 Kmux
               </span>
               <p className="text-white/50 text-sm mt-3 leading-relaxed">
-                One command switches everything.
+                The control plane for humans and agents.
               </p>
             </div>
 

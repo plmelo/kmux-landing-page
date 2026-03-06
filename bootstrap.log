@@ -1,0 +1,5 @@
+[2026-03-05 17:11:18] INFO: Enabling TCP forwarding (local only)...
+[2026-03-05 17:11:18] SUCCESS: TCP forwarding enabled (local only)
+[2026-03-05 17:11:18] INFO: Use: ssh -L <local_port>:localhost:<remote_port> user@host
+[2026-03-05 17:11:18] WARNING: REMINDER: Run 'ssh-forward-toggle disable' when you're done!
+[2026-03-05 17:11:18] INFO: This restores the hardened security state.

@@ -3,11 +3,11 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 
 const words = [
-  { text: "dev", color: "#00fff9", hold: 1800 },
-  { text: "mcp", color: "#39ff14", hold: 1800 },
-  { text: "task", color: "#ffe44d", hold: 1800 },
-  { text: "switch", color: "#4da8ff", hold: 1800 },
-  { text: "port", color: "#ff6b35", hold: 1800 },
+  { text: "agent", color: "#00fff9", hold: 1800 },
+  { text: "flow", color: "#39ff14", hold: 1800 },
+  { text: "queue", color: "#ffe44d", hold: 1800 },
+  { text: "mesh", color: "#ff6b35", hold: 1800 },
+  { text: "kernel", color: "#b537f2", hold: 1800 },
   { text: "k", color: "#ff2d95", hold: 3500 },
 ];
 
