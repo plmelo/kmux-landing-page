@@ -197,8 +197,8 @@ export default function Home() {
         }} />
 
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 mb-32 pt-20 md:pt-0 max-w-4xl mx-auto">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-8 animate-fade-slide-up opacity-0 leading-tight flex justify-center">
+        <div className="relative z-10 text-center px-6 mb-32 pt-10 md:pt-0 max-w-4xl mx-auto">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 animate-fade-slide-up opacity-0 leading-tight flex justify-center">
             <SlotMachine />
           </h1>
 
