@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
         "Content-Range": `bytes ${start}-${end}/${fileSize}`,
         "Accept-Ranges": "bytes",
         "Content-Disposition": "inline",
-        "Cache-Control": "no-store",
+        "Cache-Control": "public, max-age=604800, immutable",
       },
     });
   }
@@ -100,7 +100,7 @@ export async function GET(request: NextRequest) {
       "Content-Length": String(fileSize),
       "Accept-Ranges": "bytes",
       "Content-Disposition": "inline",
-      "Cache-Control": "no-store",
+      "Cache-Control": "public, max-age=604800, immutable",
     },
   });
 }

@@ -94,7 +94,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════
           NAVBAR
           ═══════════════════════════════════════════ */}
-      <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4 bg-[var(--color-bg-dark)]/80 backdrop-blur-sm border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4 bg-[var(--color-bg-dark)]/95 md:bg-[var(--color-bg-dark)]/80 md:backdrop-blur-sm border-b border-white/5">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="font-display text-2xl font-bold neon-text-pink tracking-wider">
@@ -189,7 +189,7 @@ export default function Home() {
         <div className="retro-grid animate-grid-scroll z-[3]" />
 
         {/* Ambient glow behind content */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-neon-purple/10 rounded-full blur-[120px] z-[1]" />
+        <div className="hidden md:block absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-neon-purple/10 rounded-full blur-[120px] z-[1]" />
 
         {/* Dark vignette between content and sun for legibility */}
         <div className="absolute inset-x-0 top-[35%] bottom-[20%] z-[4] pointer-events-none" style={{
@@ -415,7 +415,7 @@ export default function Home() {
       <section className="relative z-10 py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-6 text-center">
           {/* Ambient glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-neon-pink/5 rounded-full blur-[100px]" />
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-neon-pink/5 rounded-full blur-[100px]" />
 
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-6 relative">
             <span className="gradient-text animate-gradient-text">
@@ -497,23 +497,29 @@ export default function Home() {
                 Legal
               </h4>
               <ul className="space-y-2">
-                {["Privacy", "Terms", "License"].map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-white/50 text-sm hover:text-neon-cyan transition-colors"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="text-white/50 text-sm hover:text-neon-cyan transition-colors"
+                  >
+                    Privacy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms"
+                    className="text-white/50 text-sm hover:text-neon-cyan transition-colors"
+                  >
+                    Terms
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
 
           <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-white/50 text-sm">
-              &copy; 2026 Kmux. All rights reserved.
+              &copy; 2026 Electric Dreams LLC. All rights reserved.
             </p>
             <p className="text-white/50 text-xs font-mono">
               Works with Claude Code, Cursor, Copilot, Codex, and any MCP-compatible tool.

@@ -641,3 +641,70 @@ body {
   border-left: 4px solid;
   font-style: italic;
 }
+
+/* ═══════════════════════════════════════════
+   MOBILE PERFORMANCE
+   Reduces GPU-intensive effects on mobile
+   Chrome & Safari compositing bottlenecks.
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Hide VHS tracking line — barely visible on small screens, wastes a compositing layer */
+  .vhs-line {
+    display: none;
+  }
+
+  /* Reduce scanline density — halves GPU fill rate */
+  .scanlines {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 4px,
+      rgba(0, 0, 0, 0.02) 4px,
+      rgba(0, 0, 0, 0.02) 8px
+    );
+  }
+
+  /* Stop continuous grid animation — static grid is cheaper */
+  .retro-grid {
+    animation: none !important;
+  }
+
+  /* Shrink sun and disable animated box-shadow */
+  .retro-sun {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.3), 0 0 80px rgba(255, 45, 149, 0.15);
+    animation: none !important;
+  }
+
+  /* Reduce neon text glow layers (3 → 1) */
+  .neon-text-pink {
+    text-shadow: 0 0 10px rgba(255, 45, 149, 0.6);
+  }
+
+  .neon-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 255, 249, 0.6);
+  }
+
+  /* Disable card hover transform & box-shadow animation */
+  .neon-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .neon-card-pro {
+    animation: none;
+    box-shadow: 0 0 15px rgba(255, 45, 149, 0.1);
+  }
+
+  /* Disable continuous neon pulse on cursor — saves GPU compositing */
+  .animate-neon-pulse {
+    animation: none !important;
+  }
+
+  /* Disable star field — 16 radial gradients with 4 background-sizes */
+  .stars {
+    background-image: none;
+  }
+}
