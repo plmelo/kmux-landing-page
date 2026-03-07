@@ -142,6 +142,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -665,9 +666,10 @@ body {
     );
   }
 
-  /* Stop continuous grid animation — static grid is cheaper */
+  /* Stop continuous grid animation — keep 3D perspective, just freeze scrolling */
   .retro-grid {
     animation: none !important;
+    transform: perspective(400px) rotateX(65deg);
   }
 
   /* Shrink sun and disable animated box-shadow */
